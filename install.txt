@@ -1,0 +1,8 @@
+sudo apt-get update
+sudo apt-get build-dep -y libav-tools
+sudo apt-get install -y aria2 tmux libx264-dev yasm python-pip libcurl4-openssl-dev gdb mosh zsh
+# aria2c -x10 -s10 -k 1M https://libav.org/releases/libav-11.3.tar.xz
+tar zxf libav-11.3.tar.gz
+cd libav-11.3/
+git reset --hard
+./configure --arch=amd64 --enable-pthreads --enable-runtime-cpudetect --extra-version='6:9.18-0ubuntu0.14.04.1' --libdir=/usr/lib/x86_64-linux-gnu --prefix=/usr --enable-bzlib --enable-libdc1394 --enable-libfreetype --enable-frei0r --enable-gnutls --enable-libgsm --enable-libmp3lame --enable-librtmp --enable-libopenjpeg --enable-libopus --enable-libpulse --enable-libschroedinger --enable-libspeex --enable-libtheora --enable-vaapi --enable-vdpau --enable-libvorbis --enable-libvpx --enable-zlib --enable-gpl --enable-swscale --enable-libcdio --enable-x11grab --enable-libx264 --enable-libxvid --shlibdir=/usr/lib/x86_64-linux-gnu --enable-shared --disable-static --prefix=/home/ubuntu/libav-11.3/build

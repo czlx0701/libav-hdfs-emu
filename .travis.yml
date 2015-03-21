@@ -1,0 +1,15 @@
+language: python
+cache:
+    - apt
+branches:
+    only:
+        - master
+install:
+    - sudo apt-get update
+    - sudo apt-get build-dep -y libav-tools
+    - sudo apt-get install -y libx264-dev yasm libbz2-dev libdc1394-22-dev libfreetype6-dev libgnutls-dev libgsm1-dev libmp3lame-dev librtmp-dev libopenjpeg-dev libpulse-dev libschroedinger-dev libspeex-dev libtheora-dev libva-dev libvdpau-dev libvorbis-dev libvpx-dev zlib1g-dev libxvidcore-dev
+script: 
+    - ./configure --arch=amd64 --enable-pthreads --enable-runtime-cpudetect --extra-version='6:9.18-0ubuntu0.14.04.1' --libdir=/usr/lib/x86_64-linux-gnu --prefix=/usr --enable-bzlib --enable-libdc1394 --enable-libfreetype --enable-gnutls --enable-libgsm --enable-libmp3lame --enable-librtmp --enable-libopenjpeg --enable-libpulse --enable-libschroedinger --enable-libspeex --enable-libtheora --enable-vaapi --enable-vdpau --enable-libvorbis --enable-libvpx --enable-zlib --enable-gpl --enable-swscale --enable-libx264 --enable-libxvid --shlibdir=/usr/lib/x86_64-linux-gnu --disable-shared --enable-static
+    - make -j4
+    - ./avconv -version
+    - ./avprobe -version
