@@ -143,7 +143,7 @@ static int cache_open(URLContext *h, const char *arg, int flags, AVDictionary **
     av_strstart(arg, "hdfs://", &arg);
     if ((ret = snprintf(url, sizeof(url), "http://%s", arg)) < 0 ||
             (ret = snprintf(c->base_url, sizeof(c->base_url),
-                            "http://%s/%%d", arg)) < 0) {
+                            "http://%s/%%"PRId64, arg)) < 0) {
         av_log(h, AV_LOG_ERROR, "URL too long\n");
         return ret;
     }
